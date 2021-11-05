@@ -13,10 +13,10 @@ def home():
 def profile(user):
     return render_template("index.html",name = user)
 
-@views.route("/employess/json")
+@views.route("/employees/json")
 def getJson():
     df = pd.read_csv('employees.csv')
-    return jsonify(df.to_json())
+    return jsonify(df.to_dict())
 
 @views.route("/redirect")
 def gotopage():
