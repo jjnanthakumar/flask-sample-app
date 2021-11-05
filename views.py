@@ -16,7 +16,7 @@ def profile(user):
 @views.route("/employees/json")
 def getJson():
     df = pd.read_csv('employees.csv')
-    return jsonify(df.to_dict())
+    return df.to_json(orient="records")
 
 @views.route("/redirect")
 def gotopage():
