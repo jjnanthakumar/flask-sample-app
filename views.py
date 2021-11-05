@@ -1,6 +1,7 @@
 from flask import Blueprint
 
 from flask import jsonify, request, render_template, redirect, url_for
+import pandas as pd
 
 views = Blueprint(__name__,"views")
 
@@ -12,9 +13,10 @@ def home():
 def profile(user):
     return render_template("index.html",name = user)
 
-@views.route("/json")
+@views.route("/employess/json")
 def getJson():
-    return jsonify({"name": "Nantha"})
+    df = pd.read_csv('/employees.csv')
+    return jsonify(df.to_json())
 
 @views.route("/redirect")
 def gotopage():
